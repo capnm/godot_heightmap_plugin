@@ -55,6 +55,7 @@ if env['platform'] == "osx":
         env.Append(LINKFLAGS = ['-arch', 'x86_64'])
 
 elif env['platform'] == "linux":
+    env.Append(CPPDEFINES = ['_DEBUG'])
     target_path += 'linux/'
     cpp_bindings_library += '.linux'
     if env['target'] == 'debug':
@@ -64,7 +65,6 @@ elif env['platform'] == "linux":
     else:
         env.Append(CCFLAGS = ['-fPIC', '-O3'])
         env.Append(CXXFLAGS = ['-std=c++17'])
-        env.Append(LINKFLAGS = ['-s'])
 
 elif env['platform'] == "windows":
     target_path += 'win64/'
